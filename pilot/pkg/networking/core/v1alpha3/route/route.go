@@ -353,9 +353,9 @@ func translateRoute(in *networking.HTTPRoute,
 		weighted := make([]*route.WeightedCluster_ClusterWeight, 0)
 		for _, dst := range in.Route {
 			weight := &types.UInt32Value{Value: uint32(dst.Weight)}
-			if dst.Weight == 0 {
+			/*if dst.Weight == 0 {
 				weight.Value = uint32(100)
-			}
+			}*/
 			n := GetDestinationCluster(dst.Destination, serviceIndex[model.Hostname(dst.Destination.Host)], port)
 			weighted = append(weighted, &route.WeightedCluster_ClusterWeight{
 				Name:   n,
